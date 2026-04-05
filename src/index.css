@@ -1,0 +1,321 @@
+/* src/index.css */
+@import "tailwindcss";
+/* @import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities"; */
+
+/* --- YEH CODE SABSE UPPAR RAKHNA HAI --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Navbar ke liye space --- */
+section {
+  scroll-margin-top: 80px; /* Ya apni navbar ki height ke according */
+}
+
+/* =================================================== */
+/*      ENHANCED NEON PURPLE / PINK TEXT EFFECT       */
+/* =================================================== */
+
+.neon-purple-pink {
+  /* Text ka main color - bright aur readable */
+  color: #ff00ff;
+
+  /* Multi-layered text-shadow for depth */
+  text-shadow:
+    /* 1. Inner, dark core for a solid look */
+    0 0 5px #8B008B,
+    /* 2. Main neon color layer */
+    0 0 10px #ff00ff,
+    /* 3. Spreading glow */
+    0 0 20px #ff00ff,
+    /* 4. Outer, bright halo for the "neon" effect */
+    0 0 40px #ff73ff,
+    /* 5. Largest, ethereal glow */
+    0 0 60px #ff73ff;
+
+  /* Animation for the pulsing glow effect */
+  animation: glow-purple-pink 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow-purple-pink {
+  /* 'from' state - thoda dim glow (shuruwat) */
+  from {
+    text-shadow:
+      0 0 5px #8B008B,
+      0 0 10px #ff00ff,
+      0 0 20px #ff00ff,
+      0 0 30px #ff73ff,
+      0 0 40px #ff73ff;
+  }
+  
+  /* 'to' state - zyada bright aur bada glow (ant) */
+  to {
+    text-shadow:
+      0 0 7px #8B008B,
+      0 0 15px #ff00ff,
+      0 0 30px #ff00ff,
+      0 0 50px #ff73ff,
+      0 0 70px #ff73ff;
+  }
+}
+
+
+/* =================================================== */
+/*            NEON BLUE TEXT EFFECT                   */
+/* =================================================== */
+
+.neon-blue {
+  color: #00ffff; /* Cyan */
+  text-shadow:
+    0 0 5px #00ffff,
+    0 0 10px #00ffff,
+    0 0 15px #00ffff,
+    0 0 20px #0099ff; /* A nice blue */
+  animation: glow-blue 2s ease-in-out infinite alternate;
+}
+
+@keyframes glow-blue {
+  from {
+    text-shadow:
+      0 0 5px #00ffff,
+      0 0 10px #00ffff,
+      0 0 15px #00ffff,
+      0 0 20px #0099ff;
+  }
+  to {
+    text-shadow:
+      0 0 10px #00ffff,
+      0 0 20px #00ffff,
+      0 0 30px #00ffff,
+      0 0 40px #0099ff;
+  }
+}
+
+
+.card {
+    padding-top: 50px;
+    border: 2px solid #ff00ff;
+    transform-style: preserve-3d;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a0033 50%, #0a0a0a 100%),
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 0, 255, 0.03) 10px, rgba(255, 0, 255, 0.03) 20px);
+    background-size: 100% 100%, 20px 20px;
+    width: 100%;
+    box-shadow: 
+        0 0 10px rgba(255, 0, 255, 0.5),
+        0 0 20px rgba(255, 0, 255, 0.3),
+        0 0 30px rgba(0, 153, 255, 0.3),
+        inset 0 0 20px rgba(255, 0, 255, 0.1);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff00ff, #0099ff, #ff00ff);
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.5s ease;
+    filter: blur(10px);
+}
+
+.card:hover::before {
+    opacity: 0.7;
+    animation: neon-pulse 2s infinite;
+}
+
+.card:hover {
+    transform: rotate3d(0.5, 1, 0, 30deg) scale(1.02);
+    box-shadow: 
+        0 0 20px rgba(255, 0, 255, 0.8),
+        0 0 40px rgba(255, 0, 255, 0.5),
+        0 0 60px rgba(0, 153, 255, 0.4),
+        inset 0 0 30px rgba(255, 0, 255, 0.2);
+}
+
+.content-box {
+    background: linear-gradient(135deg, rgba(10, 10, 30, 0.95) 0%, rgba(20, 0, 50, 0.95) 100%);
+    backdrop-filter: blur(10px);
+    transition: all 0.5s ease-in-out;
+    padding: 60px 25px 25px 25px;
+    transform-style: preserve-3d;
+    border: 1px solid rgba(255, 0, 255, 0.2);
+    position: relative;
+}
+
+.content-box::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #ff00ff, transparent);
+    animation: scan-line 3s infinite;
+}
+
+.content-box .card-title {
+    display: inline-block;
+    color: #ff00ff;
+    font-size: 28px;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 50px);
+    text-shadow: 
+        0 0 10px rgba(255, 0, 255, 0.8),
+        0 0 20px rgba(255, 0, 255, 0.5),
+        0 0 30px rgba(255, 0, 255, 0.3);
+}
+
+.card:hover .card-title {
+    transform: translate3d(0px, 0px, 60px);
+    text-shadow: 
+        0 0 15px rgba(255, 0, 255, 1),
+        0 0 30px rgba(255, 0, 255, 0.8),
+        0 0 45px rgba(255, 0, 255, 0.5);
+    color: #ff73ff;
+}
+
+.content-box .card-content {
+    margin-top: 15px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #e0e0ff;
+    line-height: 1.7;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 30px);
+    text-shadow: 0 0 5px rgba(224, 224, 255, 0.3);
+}
+
+.card:hover .card-content {
+    transform: translate3d(0px, 0px, 40px);
+    color: #ffffff;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+}
+
+.content-box .see-more {
+    cursor: pointer;
+    margin-top: 1.5rem;
+    display: inline-block;
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #0099ff;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid #0099ff;
+    padding: 0.7rem 1.2rem;
+    border-radius: 4px;
+    transition: all 0.5s ease-in-out;
+    transform: translate3d(0px, 0px, 20px);
+    position: relative;
+    overflow: hidden;
+}
+
+.content-box .see-more::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: radial-gradient(circle, rgba(0, 153, 255, 0.8) 0%, transparent 70%);
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
+}
+
+.content-box .see-more:hover::before {
+    width: 100%;
+    height: 100%;
+}
+
+.content-box .see-more:hover {
+    transform: translate3d(0px, 0px, 30px) scale(1.05);
+    color: #ffffff;
+    background: rgba(0, 153, 255, 0.2);
+    border-color: #00d4ff;
+    box-shadow: 
+        0 0 15px rgba(0, 153, 255, 0.6),
+        inset 0 0 10px rgba(0, 153, 255, 0.2);
+    text-shadow: 0 0 10px rgba(0, 212, 255, 0.8);
+}
+
+.date-box {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    height: 70px;
+    width: 70px;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.9) 0%, rgba(0, 50, 100, 0.9) 100%);
+    border: 2px solid #0099ff;
+    border-radius: 8px;
+    padding: 12px;
+    transform: translate3d(0px, 0px, 80px);
+    box-shadow: 
+        0 0 15px rgba(0, 153, 255, 0.5),
+        inset 0 0 10px rgba(0, 153, 255, 0.2);
+    transition: all 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card:hover .date-box {
+    transform: translate3d(0px, 0px, 90px) scale(1.1);
+    box-shadow: 
+        0 0 25px rgba(0, 153, 255, 0.8),
+        inset 0 0 15px rgba(0, 153, 255, 0.4);
+    border-color: #00d4ff;
+}
+
+.date-box span {
+    display: block;
+    text-align: center;
+}
+
+.date-box .month {
+    color: #00d4ff;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 5px rgba(0, 212, 255, 0.8);
+}
+
+.date-box .date {
+    font-size: 24px;
+    font-weight: 900;
+    color: #00d4ff;
+    text-shadow: 
+        0 0 10px rgba(0, 212, 255, 0.8),
+        0 0 20px rgba(0, 212, 255, 0.5);
+}
+
+@keyframes neon-pulse {
+    0%, 100% {
+        opacity: 0.7;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes scan-line {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
