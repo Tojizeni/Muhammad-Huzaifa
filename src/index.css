@@ -319,3 +319,120 @@ section {
     }
 }
 
+/* hero secton */
+.matrix-container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  .matrix-pattern {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    opacity: 0.8;
+    overflow: hidden;
+  }
+
+  .matrix-column {
+    position: absolute;
+    top: -100%;
+    height: 200%;
+    font-size: 16px;
+    line-height: 18px;
+    font-weight: bold;
+    animation: fall linear infinite;
+    white-space: nowrap;
+    width: 25px;
+    overflow: hidden;
+  }
+
+  .matrix-column::before {
+    content: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    position: absolute;
+    top: 0;
+    left: 0;
+   background: linear-gradient(
+  to bottom,
+  #05010a 0%,
+  #0a0215 10%,
+  #120326 20%,
+  #1a0438 30%,
+  #24064d 40%,
+  #2e0863 50%,
+  #3a0a7a 60%,
+  #4a0c94 70%,
+  #5c0fb0 80%,
+  rgba(138, 43, 226, 0.5) 90%,
+  transparent 100%
+);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    writing-mode: vertical-lr;
+    letter-spacing: 1px;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Vary the content for different columns */
+  .matrix-column:nth-child(odd)::before {
+    content: "アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン123456789";
+  }
+
+  .matrix-column:nth-child(even)::before {
+    content: "ガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヴァィゥェォャュョッABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  }
+
+  .matrix-column:nth-child(3n)::before {
+    content: "アカサタナハマヤラワイキシチニヒミリウクスツヌフムユルエケセテネヘメレオコソトノホモヨロヲン0987654321";
+  }
+
+  .matrix-column:nth-child(4n)::before {
+    content: "ンヲロヨモホノトソコオレメヘネテセケエルユムフヌツスクウリミヒニチシキイワラヤマハナタサカア";
+  }
+
+  .matrix-column:nth-child(5n)::before {
+    content: "ガザダバパギジヂビピグズヅブプゲゼデベペゴゾドボポヴァィゥェォャュョッ!@#$%^&*()_+-=[]{}|;:,.<>?";
+  }
+
+  @keyframes fall {
+    0% {
+      transform: translateY(-10%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(110%);
+      opacity: 0;
+    }
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 1200px) {
+    .matrix-column {
+      font-size: 14px;
+      line-height: 16px;
+      width: 22px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .matrix-column {
+      font-size: 12px;
+      line-height: 14px;
+      width: 18px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .matrix-column {
+      font-size: 10px;
+      line-height: 12px;
+      width: 15px;
+    }
+  }

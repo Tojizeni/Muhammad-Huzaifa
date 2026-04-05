@@ -9,7 +9,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-50 gradient-to-r from-blue-500 to-cyan-500 bg-opacity-90 backdrop-blur-sm border-b border-cyan-500">
+      <nav className="fixed w-full z-50 gradient-to-r from-blue-500 to-cyan-500 bg-opacity-100 backdrop-blur-sm border-b border-cyan-500">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <a href="#" className="text-xl sm:text-2xl font-bold neon-blue">
