@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import styled from 'styled-components';
 
 const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -9,7 +10,7 @@ const Navbar = () => {
 
   return (
     <>
-      <nav className="fixed w-full z-50 gradient-to-r from-blue-500 to-cyan-500 bg-opacity-100 backdrop-blur-sm border-b border-cyan-500">
+      <nav className="fixed w-full items-center z-50 gradient-to-r from-blue-500 to-cyan-500 bg-opacity-100 backdrop-blur-sm border-b border-cyan-500">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
             <a href="#" className="text-xl sm:text-2xl font-bold neon-blue">
@@ -32,18 +33,23 @@ const Navbar = () => {
               </div>
             </div>
             
-            {/* Mobile menu button */}
-            <button
-              className="sm:hidden flex items-center justify-center w-8 h-8 rounded-lg bg-blue-600 bg-opacity-30 text-white focus:outline-none"
-              onClick={toggleMobileMenu}
-              aria-label="Toggle navigation menu"
-            >
-              <div className="relative w-5 h-4">
-                <span className={`absolute block h-0.5 w-5 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'rotate-45 translate-y-1.5' : 'translate-y-0'}`}></span>
-                <span className={`absolute block h-0.5 w-5 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? 'opacity-0' : 'translate-y-1.5'}`}></span>
-                <span className={`absolute block h-0.5 w-5 bg-current transform transition-all duration-300 ${isMobileMenuOpen ? '-rotate-45 translate-y-1.5' : 'translate-y-3'}`}></span>
-              </div>
-            </button>
+    {/* Mobile menu button */}
+    <StyledWrapper>
+      <div className="lg:hidden md:hidden">  
+        <input 
+          className="label-check" 
+          id="label-check" 
+          type="checkbox" 
+          checked={isMobileMenuOpen}
+          onChange={toggleMobileMenu}
+        />
+        <label htmlFor="label-check" className="hamburger-label">
+          <div className="line1" />
+          <div className="line2" />
+          <div className="line3" />
+        </label>
+      </div>
+    </StyledWrapper>
             
             <div className="hidden sm:block w-16 md:w-20"></div> {/* Empty div to balance the layout */}
           </div>
@@ -59,16 +65,7 @@ const Navbar = () => {
         <div className="flex flex-col h-full">
           {/* Sidebar header - matching navbar height */}
           <div className="flex items-center justify-between px-4 py-3 border-b border-cyan-400 border-opacity-30">
-            <span className="text-xl font-bold text-white">Menu</span>
-            <button
-              className="flex items-center justify-center w-8 h-8 rounded-lg bg-blue-600 bg-opacity-30 text-white focus:outline-none"
-              onClick={() => setIsMobileMenuOpen(false)}
-              aria-label="Close navigation menu"
-            >
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              </svg>
-            </button>
+           
           </div>
           
           {/* Menu items */}
@@ -92,5 +89,56 @@ const Navbar = () => {
     </>
   );
 };
+
+const StyledWrapper = styled.div`
+  .label-check {
+    display: none;
+  }
+
+  .hamburger-label {
+    width: 30px;
+    height: 30px;
+    display: block;
+    cursor: pointer;
+  }
+
+  .hamburger-label div {
+    width: 27px;
+    height: 4px;
+    background-color: white;
+    position: absolute;
+  }
+
+  .line1 {
+    transition: all .3s;
+  }
+
+  .line2 {
+    margin: 10px 0 0 0;
+    transition: 0.3s;
+  }
+
+  .line3 {
+    margin: 20px 0 0 0;
+    transition: 0.3s;
+  }
+
+  #label-check:checked + .hamburger-label .line1 {
+    transform: rotate(34deg) scaleX(.55) translate(34px, -4.5px);
+    border-radius: 50px 50px 50px 0;
+  }
+
+  #label-check:checked + .hamburger-label .line3 {
+    transform: rotate(-34deg) scaleX(.55) translate(34px, 4.5px);
+    border-radius: 0 50px 50px 50px;
+  }
+
+  #label-check:checked + .hamburger-label .line2 {
+    border-top-right-radius: 50px;
+    border-bottom-right-radius: 50px;
+    width: 28px;
+  }`;
+
+
 
 export default Navbar;
