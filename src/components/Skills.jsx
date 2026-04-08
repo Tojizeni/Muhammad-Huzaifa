@@ -1,6 +1,12 @@
 import React, { forwardRef, useState } from 'react';
 import { FaReact, FaNodeJs, FaHtml5, FaCss3Alt, FaGitAlt, FaNpm, FaFigma, FaBootstrap } from 'react-icons/fa';
 import { SiJavascript, SiTypescript, SiTailwindcss, SiMongodb, SiRedux, SiNextdotjs, SiExpress, SiPostman, SiVercel } from 'react-icons/si';
+import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const Skills = forwardRef((props, ref) => {
   // Define the purple/magenta glow effect
@@ -29,16 +35,116 @@ const Skills = forwardRef((props, ref) => {
 
   const [hoveredSkill, setHoveredSkill] = useState(null);
 
+  useGSAP(() => {
+    // Animate the title
+    gsap.fromTo('#skills-title',
+      {
+        scale: 0,
+        opacity: 0,
+        y: -30
+      },
+      {
+        scale: 1,
+        opacity: 1,
+        y: 0,
+        duration: 0.8,
+        ease: "back.out(1.7)",
+        scrollTrigger: {
+          trigger: '#skills',
+          start: 'top 80%',
+          toggleActions: 'play reverse play reverse'
+        }
+      }
+    );
+
+    // Animate skill cards with stagger effect
+    const cards = document.querySelectorAll('.skill-card');
+    
+    cards.forEach((card, index) => {
+      gsap.fromTo(card,
+        {
+          scale: 0,
+          opacity: 0,
+          y: 50,
+          rotation: 5
+        },
+        {
+          scale: 1,
+          opacity: 1,
+          y: 0,
+          rotation: 0,
+          duration: 0.6,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: card,
+            start: 'top 85%',
+            end: 'bottom 15%',
+            toggleActions: 'play reverse play reverse',
+            // Add some delay based on index for staggered effect
+            onEnter: () => {
+              gsap.to(card, {
+                scale: 1,
+                opacity: 1,
+                y: 0,
+                rotation: 0,
+                duration: 0.6,
+                ease: "back.out(1.7)",
+                delay: index * 0.05
+              });
+            },
+            onLeave: () => {
+              gsap.to(card, {
+                scale: 0,
+                opacity: 0,
+                y: 50,
+                rotation: 5,
+                duration: 0.4,
+                ease: "power2.in"
+              });
+            },
+            onEnterBack: () => {
+              gsap.to(card, {
+                scale: 1,
+                opacity: 1,
+                y: 0,
+                rotation: 0,
+                duration: 0.6,
+                ease: "back.out(1.7)",
+                delay: index * 0.05
+              });
+            },
+            onLeaveBack: () => {
+              gsap.to(card, {
+                scale: 0,
+                opacity: 0,
+                y: 50,
+                rotation: 5,
+                duration: 0.4,
+                ease: "power2.in"
+              });
+            }
+          }
+        }
+      );
+    });
+
+    // Cleanup ScrollTriggers
+    return () => {
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
+  }, []);
+
   return (
     <section id="skills" ref={ref} className="py-20 bg-black">
       <div className="container mx-auto px-6">
         <h2 
+          id="skills-title"
           className={`text-6xl font-bold text-center mb-12 transition-all duration-300 ${
-            hoveredSkill ? 'text-pink-300' : 'text-purple-400'
+            hoveredSkill !== null ? 'text-pink-300' : 'text-purple-400'
           }`} 
           style={{ 
-            textShadow: hoveredSkill ? intenseGlow : purpleGlow,
-            transform: hoveredSkill ? 'scale(1.1)' : 'scale(1)',
+            textShadow: hoveredSkill !== null ? intenseGlow : purpleGlow,
+            transform: hoveredSkill !== null ? 'scale(1)' : 'scale(1)',
             transition: 'all 0.3s ease'
           }}
         >
@@ -48,7 +154,7 @@ const Skills = forwardRef((props, ref) => {
           {skills.map((skill, index) => (
             <div 
               key={index} 
-              className="flex flex-col items-center justify-center p-4 bg-gray-900 rounded-lg shadow-lg transform hover:scale-110 transition-all duration-300 cursor-pointer" 
+              className="skill-card flex flex-col items-center justify-center p-4 bg-gray-900 rounded-lg shadow-lg transform hover:scale-110 transition-all duration-300 cursor-pointer" 
               style={{ 
                 boxShadow: hoveredSkill === index ? intenseGlow : purpleGlow,
                 transition: 'all 0.3s ease'

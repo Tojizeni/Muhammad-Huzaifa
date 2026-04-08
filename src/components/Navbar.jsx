@@ -13,9 +13,10 @@ const Navbar = () => {
       <nav className="fixed w-full items-center z-50 gradient-to-r from-blue-500 to-cyan-500 bg-opacity-100 backdrop-blur-sm border-b border-cyan-500">
         <div className="container mx-auto px-4 py-3">
           <div className="flex items-center justify-between">
-            <a href="#" className="text-xl sm:text-2xl font-bold neon-blue">
-              SABRI
-            </a>
+    <a href="#" className="text-xl sm:text-2xl font-bold " 
+    style={{ background: 'linear-gradient(135deg, #a855f7, #ec4899)', WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent', textShadow: '0 0 30px rgba(168, 85, 247, 0.5)', animation: 'glow 2s ease-in-out infinite alternate' }}>
+      SABRI
+    </a>
             
             {/* Desktop navigation */}
             <div className="hidden sm:flex grow justify-center">
