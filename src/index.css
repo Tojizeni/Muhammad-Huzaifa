@@ -1,0 +1,15 @@
+/* src/index.css */
+@import "tailwindcss";
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* --- YEH CODE SABSE UPPAR RAKHNA HAI --- */
+html {
+  scroll-behavior: smooth;
+}
+
+/* --- Navbar ke liye space --- */
+section {
+  scroll-margin-top: 80px; /* Ya apni navbar ki height ke according */
+}
