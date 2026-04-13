@@ -1,9 +1,10 @@
-/** @type {import('tailwindcss').Config} */
 export default {
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
-    extend: {
-      // Yahan aap custom colors, fonts, etc. add kar sakte ho
-      // example: colors: { 'brand-blue': '#1e40af' }
-    },
+    extend: {},
   },
+  plugins: [],
 }
