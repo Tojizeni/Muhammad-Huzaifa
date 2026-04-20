@@ -103,21 +103,21 @@ const Contact = forwardRef((props, ref) => {
               <FaEnvelope className="text-2xl text-cyan-400" style={{ textShadow: '0 0 10px #00d4ff' }} />
               <div>
                 <h4 className="font-semibold text-gray-200">Email</h4>
-                <p className="text-gray-400">alex.johnson@example.com</p>
+                <p className="text-gray-400">mhsabri27@gmail.com</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <FaPhone className="text-2xl text-green-400" style={{ textShadow: '0 0 10px #00ff88' }} />
               <div>
                 <h4 className="font-semibold text-gray-200">Phone</h4>
-                <p className="text-gray-400">+1 (555) 123-4567</p>
+                <p className="text-gray-400">+92 347-9858077</p>
               </div>
             </div>
             <div className="flex items-center gap-4">
               <FaMapMarkerAlt className="text-2xl text-yellow-400" style={{ textShadow: '0 0 10px #ffff00' }} />
               <div>
                 <h4 className="font-semibold text-gray-200">Location</h4>
-                <p className="text-gray-400">San Francisco, CA</p>
+                <p className="text-gray-400">Peshawar, Pakistan</p>
               </div>
             </div>
             <div className="flex gap-4 pt-4">
