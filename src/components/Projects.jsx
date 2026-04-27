@@ -3,25 +3,25 @@ import React, { forwardRef } from 'react';
 const Projects = forwardRef((props, ref) => {
   const projects = [
     {
-      title: 'E-Commerce Platform',
-      description: 'A full-featured e-commerce site with payment integration.',
-      image: 'https://via.placeholder.com/600x400',
-      tech: ['React', 'Node.js', 'MongoDB'],
-      link: '#',
+      title: 'Products management system',
+      description: 'A web application for managing products, including inventory and sales tracking.',
+      image: 'https://ibb.co/20M51xgJ',
+      tech: ['React', 'Node.js', 'tailwind CSS'],
+      link: 'https://portfolio-87eec.web.app/',
     },
     {
-      title: 'Task Management App',
-      description: 'A collaborative task management tool with real-time updates.',
-      image: 'https://via.placeholder.com/600x400',
-      tech: ['React', 'Firebase', 'Tailwind CSS'],
-      link: '#',
+      title: 'Ecomerce Website',
+      description: 'A full-featured e-commerce site.',
+      image: 'https://ibb.co/pBNVmjKp',
+      tech: ['React', 'Node.js', 'tailwind CSS'],
+      link: 'https://ecommerce-store-ai2025.web.app/products',
     },
     {
       title: 'Weather Dashboard',
       description: 'A weather app that displays current and forecast data.',
-      image: 'https://via.placeholder.com/600x400',
+      image: 'https://ibb.co/67xzHbYC',
       tech: ['HTML', 'CSS', 'JavaScript', 'API'],
-      link: '#',
+      link: 'https://blisq-beauty.web.app/',
     },
   ];
 
