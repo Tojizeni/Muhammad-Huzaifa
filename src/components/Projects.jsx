@@ -12,7 +12,7 @@ const Projects = forwardRef((props, ref) => {
     {
       title: 'Ecomerce Website',
       description: 'A full-featured e-commerce site.',
-      image: 'https://i.ibb.co/wF8GvhQ1/Screenshot-2026-04-27-123033.pnghttps://ibb.co/pBNVmjKp',
+      image: 'https://i.ibb.co/wF8GvhQ1/Screenshot-2026-04-27-123033.png',
       tech: ['React', 'Node.js', 'tailwind CSS'],
       link: 'https://ecommerce-store-ai2025.web.app/products',
     },
