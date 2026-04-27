@@ -17,8 +17,8 @@ const Projects = forwardRef((props, ref) => {
       link: 'https://ecommerce-store-ai2025.web.app/products',
     },
     {
-      title: 'Weather Dashboard',
-      description: 'A weather app that displays current and forecast data.',
+      title: 'Cosmatics Online Store',
+      description: 'An online store for beauty and cosmetic products.',
       image: 'https://ibb.co/67xzHbYC',
       tech: ['HTML', 'CSS', 'JavaScript', 'API'],
       link: 'https://blisq-beauty.web.app/',
@@ -40,7 +40,7 @@ const Projects = forwardRef((props, ref) => {
               <div className="relative">
                 <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
                 <div className="absolute inset-0 bg-blue-100 bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
-                  <a href={project.link} className="opacity-0 group-hover:opacity-100 bg-white text-gray-900 px-6 py-2 rounded-full font-semibold transform scale-90 group-hover:scale-100 transition-all duration-300">
+                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="opacity-0 group-hover:opacity-100 bg-white text-gray-900 px-6 py-2 rounded-full font-semibold transform scale-90 group-hover:scale-100 transition-all duration-300">
                     View Project
                   </a>
                 </div>
