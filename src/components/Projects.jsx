@@ -5,7 +5,7 @@ const Projects = forwardRef((props, ref) => {
     {
       title: 'Products management system',
       description: 'A web application for managing products, including inventory and sales tracking.',
-      image: 'https://i.ibb.co/V0C3cR26/Screenshot-2026-04-27-122507.png',
+      image: 'https://picsum.photos/400/300',
       tech: ['React', 'Node.js', 'tailwind CSS'],
       link: 'https://portfolio-87eec.web.app/',
     },
