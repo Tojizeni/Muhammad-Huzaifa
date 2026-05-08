@@ -6,7 +6,6 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// Styled component for the 3D card effect
 const StyledAboutCard = styled.div`
   .parent {
     width: 100%;
@@ -101,126 +100,85 @@ const About = forwardRef((props, ref) => {
 
   useGSAP(
     () => {
-      // Title animation - slides from top with fade
-      gsap.fromTo(titleRef.current,
-        {
-          y: -80,
-          opacity: 0,
-          scale: 0.8,
-          rotationX: -15
-        },
-        {
-          y: 0,
-          opacity: 1,
-          scale: 1,
-          rotationX: 0,
-          duration: 1.2,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 85%",
-            end: "bottom 15%",
-            toggleActions: "play reverse play reverse"
-          }
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none reverse"
         }
+      });
+
+      // Title - SNAPPY glitch flash
+      tl.fromTo(titleRef.current,
+        { y: -40, opacity: 0, scale: 1.4, skewX: 10, filter: "blur(8px)" },
+        { y: 0, opacity: 1, scale: 1, skewX: 0, filter: "blur(0px)", duration: 0.35, ease: "power4.out" }
+      )
+      // Quick shake flash on title
+      .to(titleRef.current, { x: 6, duration: 0.04, ease: "steps(1)" }, "-=0.05")
+      .to(titleRef.current, { x: -6, duration: 0.04, ease: "steps(1)" })
+      .to(titleRef.current, { x: 4, duration: 0.04, ease: "steps(1)" })
+      .to(titleRef.current, { x: 0, duration: 0.04, ease: "steps(1)" });
+
+      // Image - SNAP in from left with flash
+      tl.fromTo(imageWrapRef.current,
+        { x: -120, opacity: 0, scale: 0.5, rotation: -15 },
+        { x: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(3)" },
+        "-=0.15"
+      )
+      // White flash overlay effect
+      .fromTo(imageWrapRef.current,
+        { filter: "brightness(3)" },
+        { filter: "brightness(1)", duration: 0.2, ease: "power2.out" },
+        "-=0.1"
       );
 
-      // Image wrapper animation - slides from left with rotation
-      gsap.fromTo(imageWrapRef.current,
-        {
-          x: -150,
-          opacity: 0,
-          rotation: -12,
-          scale: 0.7,
-          filter: "blur(10px)"
-        },
-        {
-          x: 0,
-          opacity: 1,
-          rotation: 0,
-          scale: 1,
-          filter: "blur(0px)",
-          duration: 1.3,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: imageWrapRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse"
-          }
-        }
+      // Card - SNAP in from right
+      tl.fromTo(cardRef.current,
+        { x: 100, opacity: 0, scale: 0.6, rotationY: -30 },
+        { x: 0, opacity: 1, scale: 1, rotationY: 0, duration: 0.3, ease: "back.out(3)" },
+        "-=0.25"
+      )
+      .fromTo(cardRef.current,
+        { filter: "brightness(2.5)" },
+        { filter: "brightness(1)", duration: 0.15, ease: "power2.out" },
+        "-=0.1"
       );
 
-      // Card animation - slides from right with 3D effect
-      gsap.fromTo(cardRef.current,
-        {
-          x: 120,
-          opacity: 0,
-          rotationY: -25,
-          scale: 0.8,
-          transformOrigin: "right center"
-        },
-        {
-          x: 0,
-          opacity: 1,
-          rotationY: 0,
-          scale: 1,
-          duration: 1.2,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: cardRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play reverse play reverse"
-          }
-        }
-      );
-
-      // Continuous floating animation for image
+      // Subtle idle pulse on image (fast)
       gsap.to(imageWrapRef.current, {
-        y: 14,
-        duration: 3.5,
+        y: 6,
+        duration: 1.8,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
 
-      // Continuous scale animation for image
-      gsap.to(imageRef.current, {
-        scale: 1.06,
-        duration: 4,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      // Continuous glow animation
+      // Quick glow flicker
       gsap.to(imageWrapRef.current, {
-        boxShadow: '0 0 45px rgba(168, 85, 247, 0.45), 0 0 80px rgba(6, 182, 212, 0.3)',
-        duration: 2.5,
+        boxShadow: '0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(6, 182, 212, 0.35)',
+        duration: 1.2,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut",
       });
 
-      // Add subtle parallax effect to background blobs
+      // Background blobs fast drift
       gsap.to(".bg-blob-1", {
-        y: -30,
-        duration: 6,
+        y: -20,
+        duration: 2.5,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut"
       });
 
       gsap.to(".bg-blob-2", {
-        y: 30,
-        duration: 7,
+        y: 20,
+        duration: 3,
         repeat: -1,
         yoyo: true,
         ease: "sine.inOut"
       });
 
-      // Cleanup function
       return () => {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
       };
@@ -234,7 +192,6 @@ const About = forwardRef((props, ref) => {
       ref={sectionRef}
       className="relative overflow-hidden py-24 bg-linear-to-b from-gray-950 via-gray-900 to-black"
     >
-      {/* Animated background blobs */}
       <div className="absolute inset-0 opacity-20 pointer-events-none">
         <div className="bg-blob-1 absolute -top-20 left-1/4 h-72 w-72 rounded-full bg-fuchsia-600 blur-3xl" />
         <div className="bg-blob-2 absolute bottom-0 right-1/4 h-72 w-72 rounded-full bg-cyan-500 blur-3xl" />
@@ -250,7 +207,6 @@ const About = forwardRef((props, ref) => {
         </h2>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          {/* Image Section */}
           <div className="flex justify-center">
             <div
               ref={imageWrapRef}
@@ -264,15 +220,12 @@ const About = forwardRef((props, ref) => {
                   className="h-80 w-80 md:h-96 md:w-96 object-cover rounded-[1.25rem]"
                 />
               </div>
-
-              {/* Floating badge */}
               <div className="absolute -bottom-4 -right-4 rounded-2xl bg-white/10 backdrop-blur-md border border-white/10 px-4 py-2 text-sm text-white shadow-lg transform hover:scale-105 transition-transform">
                 Full-Stack Dev
               </div>
             </div>
           </div>
 
-          {/* Card Section */}
           <div ref={cardRef} className="flex justify-center md:justify-start">
             <StyledAboutCard>
               <div className="parent">

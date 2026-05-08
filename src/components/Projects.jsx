@@ -5,14 +5,14 @@ const Projects = forwardRef((props, ref) => {
     {
       title: 'Products management system',
       description: 'A web application for managing products, including inventory and sales tracking.',
-      image: 'https://picsum.photos/400/300',
+      image: 'https://i.ibb.co/V0C3cR26/Screenshot-2026-04-27-122507.png',
       tech: ['React', 'Node.js', 'tailwind CSS'],
       link: 'https://portfolio-87eec.web.app/',
     },
     {
       title: 'Ecomerce Website',
       description: 'A full-featured e-commerce site.',
-      image: 'https://i.ibb.co/wF8GvhQ1/Screenshot-2026-04-27-123033.png',
+      image: 'https://i.ibb.co/wF8GvhQ1/Screenshot-2026-04-27-123033.pngnpm run dev',
       tech: ['React', 'Node.js', 'tailwind CSS'],
       link: 'https://ecommerce-store-ai2025.web.app/products',
     },
@@ -39,7 +39,7 @@ const Projects = forwardRef((props, ref) => {
             <div key={index} className="bg-gray-800 rounded-lg overflow-hidden shadow-xl group">
               <div className="relative">
                 <img src={project.image} alt={project.title} className="w-full h-48 object-cover" />
-                <div className="absolute inset-0 bg-blue-100 bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-center justify-center">
                   <a href={project.link} target="_blank" rel="noopener noreferrer" className="opacity-0 group-hover:opacity-100 bg-white text-gray-900 px-6 py-2 rounded-full font-semibold transform scale-90 group-hover:scale-100 transition-all duration-300">
                     View Project
                   </a>
