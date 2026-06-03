@@ -1,5 +1,5 @@
 import React, { forwardRef, useState } from 'react';
-import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaMapMarkerAlt, FaGithub, FaLinkedin, FaTwitter, FaPinterest } from 'react-icons/fa';
 
 const Contact = forwardRef((props, ref) => {
   // State for form data and submission status
@@ -121,14 +121,14 @@ const Contact = forwardRef((props, ref) => {
               </div>
             </div>
             <div className="flex gap-4 pt-4">
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-all" style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.1)' }}>
+              <a href="https://github.com/Tojizeni" target='_blank' className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-gray-700 hover:text-white transition-all" style={{ boxShadow: '0 0 10px rgba(255, 255, 255, 0.1)' }}>
                 <FaGithub />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all">
+              <a href="https://www.linkedin.com/in/muhammad-huzaifa-sabri-94790231b" target='_blank' className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-blue-600 hover:text-white transition-all">
                 <FaLinkedin />
               </a>
-              <a href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-sky-500 hover:text-white transition-all">
-                <FaTwitter />
+              <a href="https://www.pinterest.com/SabriTech/" target='_blank' className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center text-gray-400 hover:bg-red-600 hover:text-white transition-all">
+                <FaPinterest />
               </a>
             </div>
           </div>

@@ -95,7 +95,6 @@ const About = forwardRef((props, ref) => {
   const sectionRef = useRef(null);
   const titleRef = useRef(null);
   const imageWrapRef = useRef(null);
-  const imageRef = useRef(null);
   const cardRef = useRef(null);
 
   useGSAP(
@@ -108,76 +107,25 @@ const About = forwardRef((props, ref) => {
         }
       });
 
-      // Title - SNAPPY glitch flash
+      // Title - simple fade up
       tl.fromTo(titleRef.current,
-        { y: -40, opacity: 0, scale: 1.4, skewX: 10, filter: "blur(8px)" },
-        { y: 0, opacity: 1, scale: 1, skewX: 0, filter: "blur(0px)", duration: 0.35, ease: "power4.out" }
-      )
-      // Quick shake flash on title
-      .to(titleRef.current, { x: 6, duration: 0.04, ease: "steps(1)" }, "-=0.05")
-      .to(titleRef.current, { x: -6, duration: 0.04, ease: "steps(1)" })
-      .to(titleRef.current, { x: 4, duration: 0.04, ease: "steps(1)" })
-      .to(titleRef.current, { x: 0, duration: 0.04, ease: "steps(1)" });
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, ease: "power2.out" }
+      );
 
-      // Image - SNAP in from left with flash
+      // Image - simple fade in from left
       tl.fromTo(imageWrapRef.current,
-        { x: -120, opacity: 0, scale: 0.5, rotation: -15 },
-        { x: 0, opacity: 1, scale: 1, rotation: 0, duration: 0.3, ease: "back.out(3)" },
-        "-=0.15"
-      )
-      // White flash overlay effect
-      .fromTo(imageWrapRef.current,
-        { filter: "brightness(3)" },
-        { filter: "brightness(1)", duration: 0.2, ease: "power2.out" },
-        "-=0.1"
+        { x: -40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+        "-=0.3"
       );
 
-      // Card - SNAP in from right
+      // Card - simple fade in from right
       tl.fromTo(cardRef.current,
-        { x: 100, opacity: 0, scale: 0.6, rotationY: -30 },
-        { x: 0, opacity: 1, scale: 1, rotationY: 0, duration: 0.3, ease: "back.out(3)" },
-        "-=0.25"
-      )
-      .fromTo(cardRef.current,
-        { filter: "brightness(2.5)" },
-        { filter: "brightness(1)", duration: 0.15, ease: "power2.out" },
-        "-=0.1"
+        { x: 40, opacity: 0 },
+        { x: 0, opacity: 1, duration: 0.6, ease: "power2.out" },
+        "-=0.3"
       );
-
-      // Subtle idle pulse on image (fast)
-      gsap.to(imageWrapRef.current, {
-        y: 6,
-        duration: 1.8,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      // Quick glow flicker
-      gsap.to(imageWrapRef.current, {
-        boxShadow: '0 0 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(6, 182, 212, 0.35)',
-        duration: 1.2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-
-      // Background blobs fast drift
-      gsap.to(".bg-blob-1", {
-        y: -20,
-        duration: 2.5,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
-
-      gsap.to(".bg-blob-2", {
-        y: 20,
-        duration: 3,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut"
-      });
 
       return () => {
         ScrollTrigger.getAll().forEach(trigger => trigger.kill());
@@ -201,7 +149,6 @@ const About = forwardRef((props, ref) => {
         <h2
           ref={titleRef}
           className="text-5xl md:text-6xl font-black text-center mb-16 text-transparent bg-clip-text bg-linear-to-r from-fuchsia-400 via-white to-cyan-400"
-          style={{ textShadow: '0 0 18px rgba(236, 72, 153, 0.35)' }}
         >
           About Me
         </h2>
@@ -214,7 +161,6 @@ const About = forwardRef((props, ref) => {
             >
               <div className="p-2 rounded-3xl bg-gray-950">
                 <img
-                  ref={imageRef}
                   src="me.jpeg"
                   alt="About Me"
                   className="h-80 w-80 md:h-96 md:w-96 object-cover rounded-[1.25rem]"
