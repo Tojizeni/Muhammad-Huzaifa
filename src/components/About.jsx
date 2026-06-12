@@ -4,6 +4,8 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+
+
 gsap.registerPlugin(ScrollTrigger);
 
 const StyledAboutCard = styled.div`
@@ -185,7 +187,8 @@ const About = forwardRef((props, ref) => {
                       the latest web technologies, I build applications that balance functionality
                       with great design.
                     </p>
-                    <span className="see-more">See More →</span>
+                    <a href="#qualification"><span className="see-more">See More →</span></a>
+                    
                   </div>
                   <div className="date-box">
                     <span className="month">EXP</span>
@@ -199,6 +202,7 @@ const About = forwardRef((props, ref) => {
       </div>
     </section>
   );
+
 });
 
 About.displayName = 'About';

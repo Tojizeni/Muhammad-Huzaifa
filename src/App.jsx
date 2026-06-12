@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 
 // Lazy load heavy sections
 const About = React.lazy(() => import('./components/About'));
+const Qualification = React.lazy(() => import('./components/Qualification'));
 const Skills = React.lazy(() => import('./components/Skills'));
 const Projects = React.lazy(() => import('./components/Projects'));
 const Services = React.lazy(() => import('./components/Services'));
@@ -51,6 +52,9 @@ function App() {
       {/* Lazy loaded components */}
       <Suspense fallback={<div className="text-center py-10">Loading...</div>}>
         <About />
+        <section id="qualification">
+          <Qualification />
+        </section>
         <Skills />
         <Projects />
         <Services />
