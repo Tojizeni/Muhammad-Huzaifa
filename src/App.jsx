@@ -8,6 +8,7 @@ const Qualification = React.lazy(() => import('./components/Qualification'));
 const Skills = React.lazy(() => import('./components/Skills'));
 const Projects = React.lazy(() => import('./components/Projects'));
 const Services = React.lazy(() => import('./components/Services'));
+const Torch = React.lazy(() => import('./components/Torch'));
 const Testimonials = React.lazy(() => import('./components/Testimonials'));
 const Contact = React.lazy(() => import('./components/Contact'));
 const Footer = React.lazy(() => import('./components/Footer'));
@@ -58,6 +59,7 @@ function App() {
         <Skills />
         <Projects />
         <Services />
+        {/* <Torch /> */}
         <Testimonials />
         <Contact />
         <Footer />
