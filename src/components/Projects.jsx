@@ -23,6 +23,13 @@ const Projects = forwardRef((props, ref) => {
       tech: ['HTML', 'CSS', 'JavaScript', 'API'],
       link: 'https://blisq-beauty.web.app/',
     },
+    {
+      title: 'Monopoly Accounts Banking System',
+      description: 'A web application for managing bank accounts and transactions.',
+      image: 'https://i.ibb.co/QvJF1Yzd/Screenshot-2026-08-13-120604.png',
+      tech: ['JavaScript', 'API' , 'Convex Backend', 'Tailwind CSS', 'React', 'Vite', 'Vercel',],
+      link: 'https://monopoly-banking-visual-accounts.vercel.app/',
+    },
   ];
 
   return (
